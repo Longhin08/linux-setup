@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Programas de terceiros: VS Code, Docker, AnyDesk, Chrome, Discord
+# Programas de terceiros: VS Code, Docker, AnyDesk, Chrome (padrão, no lugar do Firefox), Discord
 set -euo pipefail
 
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -37,3 +37,8 @@ install_deb() {
 }
 install_deb google-chrome-stable "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 install_deb discord "https://discord.com/api/download?platform=linux&format=deb"
+
+# Firefox fora; Chrome como navegador padrão
+mapfile -t ff < <(dpkg-query -W -f '${db:Status-Abbrev} ${Package}\n' 'firefox*' 2>/dev/null | awk '/^ii/ {print $2}')
+[ ${#ff[@]} -gt 0 ] && sudo apt purge -y "${ff[@]}"
+xdg-settings set default-web-browser google-chrome.desktop

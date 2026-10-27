@@ -26,7 +26,7 @@ Os scripts podem ser rodados de novo sem problema; o que já está instalado é 
 | Etapa      | O que faz |
 |------------|-----------|
 | `apt`      | `apt upgrade` + pacotes de [`packages.txt`](packages.txt): git, gh, jq, tmux, zsh, build-essential, Python (pip/venv/dev), codecs |
-| `repos`    | VS Code, Docker (+ compose/buildx, usuário no grupo `docker`), AnyDesk, Google Chrome, Discord |
+| `repos`    | VS Code, Docker (+ compose/buildx, usuário no grupo `docker`), AnyDesk, Google Chrome (navegador padrão; remove o Firefox), Discord |
 | `dev`      | nvm + Node 24, Claude Code, OpenCode, Orca (AppImage + atalho no menu) |
 | `vscode`   | Extensões de [`vscode-extensions.txt`](vscode-extensions.txt) |
 | `desktop`  | Base do Cinnamon: gestos do touchpad, teclado `br+thinkpad`, sons desligados |
