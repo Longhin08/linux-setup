@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Visual de macOS no Cinnamon: tema WhiteSur (GTK + Cinnamon), ícones, cursor, wallpaper,
-# fonte Inter, botões das janelas à esquerda, painel em cima e dock Plank embaixo
+# fonte Inter, botões das janelas à esquerda, barra em cima e dock embaixo (painéis do próprio Cinnamon)
 set -euo pipefail
 
 if [ "${XDG_CURRENT_DESKTOP:-}" != "X-Cinnamon" ]; then
@@ -8,7 +8,7 @@ if [ "${XDG_CURRENT_DESKTOP:-}" != "X-Cinnamon" ]; then
   exit 0
 fi
 
-sudo apt install -y plank fonts-inter sassc libglib2.0-dev-bin
+sudo apt install -y fonts-inter sassc libglib2.0-dev-bin
 
 # Temas WhiteSur (instalam em ~/.themes e ~/.local/share/icons)
 tmp="$(mktemp -d)"
@@ -29,14 +29,3 @@ mkdir -p "$(dirname "$WALL")"
 dconf load /org/cinnamon/ < "$ROOT/dotfiles/macos/cinnamon.dconf"
 gsettings set org.cinnamon.desktop.background picture-uri "file://$WALL"
 
-# Plank: config e início automático
-dconf load /net/launchpad/plank/docks/ < "$ROOT/dotfiles/macos/plank.dconf"
-mkdir -p "$HOME/.config/autostart"
-cat > "$HOME/.config/autostart/plank.desktop" <<DESKTOP
-[Desktop Entry]
-Type=Application
-Name=Plank
-Exec=plank
-X-GNOME-Autostart-enabled=true
-DESKTOP
-pgrep -x plank >/dev/null || (setsid plank >/dev/null 2>&1 &)

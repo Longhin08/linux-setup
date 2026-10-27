@@ -1,7 +1,7 @@
 [/]
 visible-name='macOS'
 use-system-font=false
-font='MesloLGS Nerd Font 11'
+font='MesloLGS Nerd Font Mono 11'
 use-theme-colors=false
 background-color='#1e1e1e'
 foreground-color='#e5e5e7'

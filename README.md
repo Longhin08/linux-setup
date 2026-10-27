@@ -30,7 +30,7 @@ Os scripts podem ser rodados de novo sem problema; o que já está instalado é 
 | `dev`      | nvm + Node 24, Claude Code, OpenCode, Orca (AppImage + atalho no menu) |
 | `vscode`   | Extensões de [`vscode-extensions.txt`](vscode-extensions.txt) |
 | `desktop`  | Base do Cinnamon: gestos do touchpad, teclado `br+thinkpad`, sons desligados |
-| `macos`    | Visual de macOS: tema [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) escuro, ícones e cursor WhiteSur, wallpaper, fonte Inter, botões das janelas à esquerda, painel em cima, dock Plank embaixo |
+| `macos`    | Visual de macOS: tema [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) escuro, ícones e cursor WhiteSur, wallpaper, fonte Inter, botões das janelas à esquerda, barra em cima (menu + status) e dock embaixo que se esconde sozinho |
 | `terminal` | gnome-terminal com as cores da Apple no modo escuro, fonte MesloLGS Nerd Font e prompt [Starship](https://starship.rs) |
 | `dotfiles` | `.bashrc` (PATH, nvm, opencode), git (nome/e-mail + credencial do gh), statusline e atalhos do Claude Code |
 
@@ -50,5 +50,4 @@ Pacotes apt novos: adicionar em `packages.txt`.
 dconf load /org/cinnamon/ < dotfiles/cinnamon/cinnamon.dconf
 gsettings set org.cinnamon.desktop.wm.preferences button-layout ':minimize,maximize,close'
 gsettings set org.cinnamon panels-enabled "['1:0:bottom']"
-rm ~/.config/autostart/plank.desktop && pkill plank
 ```
