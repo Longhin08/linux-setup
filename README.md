@@ -49,5 +49,6 @@ Pacotes apt novos: adicionar em `packages.txt`.
 ```bash
 dconf load /org/cinnamon/ < dotfiles/cinnamon/cinnamon.dconf
 gsettings set org.cinnamon.desktop.wm.preferences button-layout ':minimize,maximize,close'
+gsettings set org.cinnamon panels-enabled "['1:0:bottom']"
 rm ~/.config/autostart/plank.desktop && pkill plank
 ```
