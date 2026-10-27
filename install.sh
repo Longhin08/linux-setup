@@ -6,7 +6,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export ROOT
 
-STEPS=(apt repos dev vscode desktop dotfiles)
+STEPS=(apt repos dev vscode desktop macos terminal dotfiles)
 [ $# -gt 0 ] && STEPS=("$@")
 
 if [ "$EUID" -eq 0 ]; then

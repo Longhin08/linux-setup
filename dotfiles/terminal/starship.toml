@@ -1,0 +1,42 @@
+# Prompt enxuto no estilo zsh do macOS, com as cores do sistema da Apple
+add_newline = true
+format = "$directory$git_branch$git_status$python$nodejs$docker_context$cmd_duration$line_break$character"
+
+[directory]
+style = "bold #0a84ff"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "#bf5af2"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "#ff9f0a"
+format = "([$all_status$ahead_behind]($style) )"
+
+[python]
+symbol = " "
+style = "#ffd60a"
+format = "[$symbol$version( \\($virtualenv\\))]($style) "
+
+[nodejs]
+symbol = " "
+style = "#32d74b"
+format = "[$symbol$version]($style) "
+
+[docker_context]
+symbol = " "
+style = "#64d2ff"
+format = "[$symbol$context]($style) "
+
+[cmd_duration]
+min_time = 2000
+style = "#98989d"
+format = "[ $duration]($style) "
+
+[character]
+success_symbol = "[❯](bold #32d74b)"
+error_symbol = "[❯](bold #ff453a)"

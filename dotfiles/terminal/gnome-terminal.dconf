@@ -1,0 +1,23 @@
+[/]
+visible-name='macOS'
+use-system-font=false
+font='MesloLGS Nerd Font 11'
+use-theme-colors=false
+background-color='#1e1e1e'
+foreground-color='#e5e5e7'
+bold-is-bright=false
+bold-color-same-as-fg=true
+cursor-colors-set=true
+cursor-background-color='#e5e5e7'
+cursor-foreground-color='#1e1e1e'
+cursor-shape='block'
+highlight-colors-set=true
+highlight-background-color='#3f638b'
+highlight-foreground-color='#ffffff'
+palette=['#3a3a3c', '#ff453a', '#32d74b', '#ffd60a', '#0a84ff', '#bf5af2', '#64d2ff', '#d1d1d6', '#636366', '#ff6961', '#30db5b', '#ffd426', '#409cff', '#da8fff', '#70d7ff', '#ffffff']
+use-transparent-background=true
+background-transparency-percent=4
+default-size-columns=110
+default-size-rows=30
+audible-bell=false
+scrollback-unlimited=true
