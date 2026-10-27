@@ -1,0 +1,102 @@
+[org/cinnamon]
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:right:1:xapp-status@cinnamon.org:4', 'panel1:right:2:notifications@cinnamon.org:5', 'panel1:right:3:printers@cinnamon.org:6', 'panel1:right:4:removable-drives@cinnamon.org:7', 'panel1:right:5:keyboard@cinnamon.org:8', 'panel1:right:7:network@cinnamon.org:10', 'panel1:right:8:sound@cinnamon.org:11', 'panel1:right:9:power@cinnamon.org:12', 'panel1:right:10:calendar@cinnamon.org:13']
+panels-enabled=['1:0:top']
+panels-height=['1:24']
+panels-autohide=['1:false']
+panel-zone-icon-sizes='[{"panelId":1,"left":16,"center":0,"right":16}]'
+panel-zone-symbolic-icon-sizes='[{"panelId":1,"left":16,"center":16,"right":16}]'
+next-applet-id=15
+enabled-extensions=['transparent-panels@germanfr', 'widget-blur@local']
+enabled-desklets=['clock@cinnamon.org:0:25:50', 'calendar@deeppradhan:1:250:50', 'simple-system-monitor@ariel:2:550:50']
+next-desklet-id=3
+hotcorner-layout=['scale:true:150', 'scale:false:0', 'scale:false:0', 'desktop:false:0']
+
+[org/cinnamon/theme]
+name='WhiteSur-Dark-Widgets'
+
+[org/cinnamon/desktop/interface]
+gtk-theme='WhiteSur-Dark'
+icon-theme='Papirus-Dark-Blue'
+cursor-theme='Bibata-Modern-Classic'
+font-name='Inter 10'
+
+[org/cinnamon/desktop/wm/preferences]
+theme='WhiteSur-Dark'
+button-layout=':minimize,maximize,close'
+titlebar-font='Inter Semi-Bold 10'
+
+[org/cinnamon/desktop/background]
+picture-options='zoom'
+
+[org/cinnamon/gestures]
+enabled=true
+pinch-in-4='TOGGLE_DESKTOP::end'
+pinch-out-4='TOGGLE_DESKTOP::end'
+swipe-down-2=''
+swipe-down-3='TOGGLE_DESKTOP::end'
+swipe-down-4='VOLUME_DOWN::end'
+swipe-left-2=''
+swipe-left-3='WORKSPACE_NEXT::end'
+swipe-left-4='WINDOW_WORKSPACE_PREVIOUS::end'
+swipe-right-2=''
+swipe-right-3='WORKSPACE_PREVIOUS::end'
+swipe-right-4='WINDOW_WORKSPACE_NEXT::end'
+swipe-up-2=''
+swipe-up-3='TOGGLE_EXPO::end'
+swipe-up-4='VOLUME_UP::end'
+tap-3='MEDIA_PLAY_PAUSE::end'
+
+[org/cinnamon/desktop/keybindings]
+custom-list=['custom0']
+
+[org/cinnamon/desktop/keybindings/custom-keybindings/custom0]
+binding=['<Super>space']
+command='ulauncher-toggle'
+name='Ulauncher'
+
+[org/cinnamon/desktop/keybindings/media-keys]
+area-screenshot=['<Shift>Print', '<Super><Shift>4']
+area-screenshot-clip=['<Control><Shift>Print', '<Super><Control><Shift>4']
+screenshot=['Print', '<Super><Shift>3']
+screenshot-clip=['<Control>Print', '<Super><Control><Shift>3']
+window-screenshot=['<Alt>Print', '<Super><Shift>5']
+window-screenshot-clip=['<Control><Alt>Print', '<Super><Control><Shift>5']
+
+[org/cinnamon/desktop/keybindings/wm]
+switch-input-source=['XF86Keyboard']
+switch-input-source-backward=['<Shift>XF86Keyboard']
+
+[org/cinnamon/settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-schedule-mode='auto'
+night-light-temperature=uint32 3500
+
+[org/gnome/desktop/interface]
+gtk-theme='WhiteSur-Dark'
+icon-theme='Papirus-Dark-Blue'
+font-name='Inter 10'
+document-font-name='Inter 10'
+
+[org/gnome/desktop/wm/keybindings]
+switch-input-source=['XF86Keyboard']
+switch-input-source-backward=['<Shift>XF86Keyboard']
+
+[org/freedesktop/ibus/general/hotkey]
+triggers=@as []
+
+[org/nemo/desktop]
+font='Inter 10'
+
+[net/launchpad/plank/docks/dock1]
+alignment='center'
+dock-items=['nemo.dockitem', 'org.gnome.Terminal.dockitem', 'google-chrome.dockitem']
+gap-size=8
+hide-delay=300
+hide-mode='window-dodge'
+icon-size=38
+position='bottom'
+preview-delay=300
+previews-enabled=true
+show-dock-item=false
+theme='Mac-Dots'
+zoom-enabled=false

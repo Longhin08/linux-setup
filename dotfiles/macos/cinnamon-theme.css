@@ -1,0 +1,9 @@
+@import url("@HOME@/.themes/WhiteSur-Dark/cinnamon/cinnamon.css");
+
+/* macOS-style widgets: translucent dark, large radius */
+.desklet-with-borders {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  background-color: rgba(40, 40, 46, 0.32);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.30);
+  padding: 16px; }

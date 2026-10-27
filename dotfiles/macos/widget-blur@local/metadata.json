@@ -1,0 +1,6 @@
+{
+    "uuid": "widget-blur@local",
+    "name": "Widget blur",
+    "description": "macOS-style frosted background for desklets, from a blurred copy of the wallpaper",
+    "cinnamon-version": ["6.0"]
+}

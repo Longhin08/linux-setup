@@ -1,0 +1,7 @@
+{
+    "hotkey-show-app": "<Super>space",
+    "theme-name": "dark",
+    "show-indicator-icon": false,
+    "show-recent-apps": "3",
+    "render-on-screen": "mouse-pointer-monitor"
+}

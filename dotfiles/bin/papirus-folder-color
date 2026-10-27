@@ -1,0 +1,32 @@
+#!/bin/bash
+# Cria ~/.local/share/icons/Papirus-Dark-<Cor>: Papirus-Dark com pastas (e o ícone do Nemo) na cor escolhida.
+# Uso: papirus-folder-color blue|orange|red|green|...
+set -e
+SRC=/usr/share/icons/Papirus-Dark
+COLOR=${1:-orange}
+NAME=Papirus-Dark-${COLOR^}
+DST=$HOME/.local/share/icons/$NAME
+rm -rf "$DST"; mkdir -p "$DST"
+sed -e "s/^Name=.*/Name=$NAME/" -e "s/^Inherits=.*/Inherits=Papirus-Dark,breeze-dark,hicolor/" "$SRC/index.theme" > "$DST/index.theme"
+n=0
+for d in "$SRC"/*/places; do
+  rel=${d#$SRC/}; real=$(readlink -f "$d")
+  for f in "$real"/*.svg; do
+    [ -L "$f" ] || continue
+    t=$(readlink -f "$f"); t=${t##*/}
+    [[ $t =~ ^(folder|user)-blue(-.*)?\.svg$ ]] || continue
+    new="${BASH_REMATCH[1]}-$COLOR${BASH_REMATCH[2]}.svg"
+    [ -e "$real/$new" ] || continue
+    mkdir -p "$DST/$rel"
+    ln -sf "$real/$new" "$DST/$rel/${f##*/}"; n=$((n+1))
+  done
+done
+# file manager app icon -> plain folder of the chosen color
+for d in "$SRC"/*/apps; do
+  rel=${d#$SRC/}; real=$(readlink -f "$d"); pl=$(readlink -f "$d/../places")
+  [ -e "$pl/folder-$COLOR.svg" ] || continue
+  mkdir -p "$DST/$rel"
+  for a in system-file-manager nemo; do ln -sf "$pl/folder-$COLOR.svg" "$DST/$rel/$a.svg"; n=$((n+1)); done
+done
+gtk-update-icon-cache -f "$DST" >/dev/null 2>&1 || true
+echo "links: $n"
