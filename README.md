@@ -4,6 +4,17 @@ Recria meu ambiente **Linux Mint 22.3 (Cinnamon)** numa instalação nova, com v
 
 ![Área de trabalho](docs/screenshot.jpg)
 
+## Instalar o Mint do zero
+
+A ISO não fica no repo (são 3 GB; o GitHub aceita até 100 MB por arquivo). O [`iso.sh`](iso.sh) baixa a oficial do **Mint 22.3 Cinnamon**, confere a assinatura e o SHA-256 e, se quiser, grava no pendrive:
+
+```bash
+./iso.sh             # baixa e confere em ~/Downloads
+./iso.sh /dev/sdX    # ...e grava no pendrive (apaga tudo nele; pede confirmação)
+```
+
+Sem Linux à mão: baixar em [linuxmint.com/download.php](https://linuxmint.com/download.php) e gravar com o [Balena Etcher](https://etcher.balena.io) ou o [Rufus](https://rufus.ie). Depois de instalar, seguir o **Uso** abaixo.
+
 ## Uso
 
 ```bash
