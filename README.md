@@ -6,6 +6,9 @@ Recria meu ambiente **Linux Mint 22.3 (Cinnamon)** numa instalação nova, com v
 
 ## Instalar o Mint do zero
 
+**Download direto:** [linuxmint-22.3-cinnamon-64bit.iso](https://mirrors.edge.kernel.org/linuxmint/stable/22.3/linuxmint-22.3-cinnamon-64bit.iso) (3,1 GB, espelho oficial do kernel.org)
+SHA-256: `a081ab202cfda17f6924128dbd2de8b63518ac0531bcfe3f1a1b88097c459bd4`
+
 A ISO não fica no repo (são 3 GB; o GitHub aceita até 100 MB por arquivo). O [`iso.sh`](iso.sh) baixa a oficial do **Mint 22.3 Cinnamon**, confere a assinatura e o SHA-256 e, se quiser, grava no pendrive:
 
 ```bash
