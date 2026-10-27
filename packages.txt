@@ -1,0 +1,15 @@
+# Pacotes APT (repositórios oficiais Mint/Ubuntu)
+git
+gh
+jq
+tmux
+zsh
+curl
+wget
+gpg
+apt-transport-https
+build-essential
+python3-pip
+python3-venv
+python3-dev
+mint-meta-codecs
