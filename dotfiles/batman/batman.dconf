@@ -1,0 +1,16 @@
+[org/cinnamon/theme]
+name='WhiteSur-Dark-Batman'
+
+[org/cinnamon/desktop/interface]
+gtk-theme='WhiteSur-Dark-Batman'
+icon-theme='Papirus-Dark-Yellow'
+
+[org/cinnamon/desktop/wm/preferences]
+theme='WhiteSur-Dark-Batman'
+
+[org/gnome/desktop/interface]
+gtk-theme='WhiteSur-Dark-Batman'
+icon-theme='Papirus-Dark-Yellow'
+
+[net/launchpad/plank/docks/dock1]
+theme='Batman'

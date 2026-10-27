@@ -1,0 +1,23 @@
+[/]
+visible-name='Batman'
+use-system-font=false
+font='MesloLGS Nerd Font Mono 11'
+use-theme-colors=false
+background-color='#0c0c0e'
+foreground-color='#d4d4d8'
+bold-is-bright=false
+bold-color-same-as-fg=true
+cursor-colors-set=true
+cursor-background-color='#f2b808'
+cursor-foreground-color='#0c0c0e'
+cursor-shape='block'
+highlight-colors-set=true
+highlight-background-color='#f2b808'
+highlight-foreground-color='#121212'
+palette=['#2a2a2e', '#e5484d', '#8cc265', '#f2b808', '#6b8bb3', '#b48ead', '#7aa6b8', '#c8c8cc', '#5a5a60', '#ff6b6b', '#a8d68a', '#ffd23f', '#8fa9cc', '#c9a6c2', '#9cc3d1', '#ffffff']
+use-transparent-background=true
+background-transparency-percent=4
+default-size-columns=110
+default-size-rows=30
+audible-bell=false
+scrollback-unlimited=true

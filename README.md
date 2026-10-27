@@ -1,6 +1,8 @@
 # linux-setup
 
-Recria meu ambiente **Linux Mint 22.3 (Cinnamon)** numa instalação nova, com visual de macOS.
+Recria meu ambiente **Linux Mint 22.3 (Cinnamon)** numa instalação nova, com visual de macOS nas cores do Batman.
+
+![Área de trabalho](docs/screenshot.jpg)
 
 ## Uso
 
@@ -29,9 +31,10 @@ Os scripts podem ser rodados de novo sem problema; o que já está instalado é 
 | `repos`    | VS Code, Docker (+ compose/buildx, usuário no grupo `docker`), AnyDesk, Google Chrome (navegador padrão; remove o Firefox), Discord |
 | `dev`      | nvm + Node 24, Claude Code, OpenCode, Orca (AppImage + atalho no menu) |
 | `vscode`   | Extensões de [`vscode-extensions.txt`](vscode-extensions.txt) |
-| `desktop`  | Base do Cinnamon: gestos do touchpad, teclado `br+thinkpad`, sons desligados |
+| `desktop`  | Base do Cinnamon: gestos do touchpad, teclado `br+thinkpad`, sons desligados, monitores sempre na taxa de atualização máxima (`max-refresh`, no login e ao plugar um monitor) |
 | `macos`    | Visual de macOS: tema [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) escuro (apps, bordas com botões 🟡🟢🔴 à direita e Cinnamon), ícones Papirus com pastas azuis, cursor Bibata, fonte Inter, wallpapers escuros do macOS, barra em cima fina e transparente, dock [Plank Reloaded](https://github.com/zquestz/plank-reloaded) com prévia das janelas, widgets (relógio, calendário, monitor) com vidro desfocado, busca [Ulauncher](https://ulauncher.io) no Super+Espaço, gestos de 3/4 dedos, prints Super+Shift+3/4/5 e luz noturna |
 | `terminal` | gnome-terminal com as cores da Apple no modo escuro, fonte MesloLGS Nerd Font e prompt [Starship](https://starship.rs) |
+| `batman`   | Cores do Batman por cima do visual de macOS: tema WhiteSur com destaque amarelo (texto preto em cima), pastas Papirus amarelas, dock e widgets pretos com amarelo, terminal e prompt nas mesmas cores, 8 wallpapers escuros do Batman e do Homem de Ferro ([wallhaven](https://wallhaven.cc)) |
 | `dotfiles` | `.bashrc` (PATH, nvm, opencode), git (nome/e-mail + credencial do gh), statusline e atalhos do Claude Code |
 
 ## Atualizar o repo com o estado atual da máquina
@@ -51,6 +54,12 @@ Pacotes apt novos: adicionar em `packages.txt`.
 - **Cor das pastas**: `papirus-folder-color orange` (ou `red`, `green`...) e escolher `Papirus-Dark-<Cor>` em Temas → Ícones.
 - **Widgets**: a extensão `widget-blur@local` usa como fundo um pedaço borrado do wallpaper; acompanha quando o widget é arrastado ou o wallpaper muda.
 - **Dock**: Ctrl + clique direito no dock abre as preferências do Plank.
+
+## Visual Batman: detalhes
+
+- **Wallpaper**: ficam em `~/.local/share/backgrounds/batman` (aparecem em Configurações → Plano de fundo); o padrão é o Batman no telhado de Gotham. Para trocar a lista, editar os caminhos `w.wallhaven.cc/full/...` em `scripts/batman.sh`.
+- **Tema**: `dotfiles/batman/recolor-theme.py` copia o `WhiteSur-Dark` para `WhiteSur-Dark-Batman` trocando todo azul por amarelo; para outra cor, mudar `HUE` no script.
+- **Voltar ao macOS azul**: `./install.sh macos terminal`.
 
 ## Voltar ao visual padrão do Mint
 

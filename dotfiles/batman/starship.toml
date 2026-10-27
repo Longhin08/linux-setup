@@ -1,0 +1,42 @@
+# Prompt enxuto no estilo zsh do macOS, nas cores do Batman (preto, cinza e amarelo)
+add_newline = true
+format = "$directory$git_branch$git_status$python$nodejs$docker_context$cmd_duration$line_break$character"
+
+[directory]
+style = "bold #f2b808"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "#c8c8cc"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "#ff9f0a"
+format = "([$all_status$ahead_behind]($style) )"
+
+[python]
+symbol = " "
+style = "#ffd23f"
+format = "[$symbol$version( \\($virtualenv\\))]($style) "
+
+[nodejs]
+symbol = " "
+style = "#8cc265"
+format = "[$symbol$version]($style) "
+
+[docker_context]
+symbol = " "
+style = "#7aa6b8"
+format = "[$symbol$context]($style) "
+
+[cmd_duration]
+min_time = 2000
+style = "#6e6e73"
+format = "[ $duration]($style) "
+
+[character]
+success_symbol = "[❯](bold #f2b808)"
+error_symbol = "[❯](bold #e5484d)"

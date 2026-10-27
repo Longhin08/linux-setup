@@ -1,0 +1,42 @@
+#!/bin/bash
+# Põe cada monitor ligado na maior taxa de atualização da resolução em uso (X11/xrandr).
+# Uso: max-refresh           aplica uma vez
+#      max-refresh --watch   aplica agora e de novo sempre que um monitor é plugado/desplugado
+set -e
+
+apply() {
+  xrandr --query | awk '
+    /^[^ ]/ { out = ($2 == "connected") ? $1 : ""; next }
+    out != "" && /^   / {
+      for (i = 2; i <= NF; i++) {
+        r = $i; cur = (r ~ /\*/); gsub(/[*+]/, "", r)
+        if (r == "") continue
+        if (cur) { mode[out] = $1; rate[out] = r }
+        k = out SUBSEP $1
+        if (!(k in best) || r + 0 > best[k] + 0) best[k] = r
+      }
+    }
+    END {
+      for (o in mode) {
+        b = best[o SUBSEP mode[o]]
+        if (b + 0 > rate[o] + 0.01) print o, mode[o], b
+      }
+    }' | while read -r out m r; do
+    echo "$out: $m @ $r Hz"
+    xrandr --output "$out" --mode "$m" --rate "$r"
+  done
+}
+
+if [ "$1" != "--watch" ]; then
+  apply
+  exit
+fi
+
+sleep 5  # deixa o Cinnamon aplicar a configuração de tela do login primeiro
+apply
+udevadm monitor --udev --subsystem-match=drm | while read -r line; do
+  [[ $line == *change* ]] || continue
+  sleep 3                                   # espera o Cinnamon reagir ao monitor novo
+  while read -r -t 0.2 _; do :; done        # junta a rajada de eventos de um mesmo hotplug
+  apply || true
+done
