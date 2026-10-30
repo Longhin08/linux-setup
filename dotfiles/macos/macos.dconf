@@ -7,7 +7,7 @@ panel-zone-icon-sizes='[{"panelId":1,"left":16,"center":0,"right":16}]'
 panel-zone-symbolic-icon-sizes='[{"panelId":1,"left":16,"center":16,"right":16}]'
 next-applet-id=15
 enabled-extensions=['transparent-panels@germanfr', 'widget-blur@local']
-enabled-desklets=['clock@cinnamon.org:0:25:50', 'calendar@deeppradhan:1:250:50', 'simple-system-monitor@ariel:2:550:50']
+enabled-desklets=['clock@cinnamon.org:0:25:50', 'calendar@deeppradhan:1:250:50', 'simple-system-monitor@ariel:2:575:50']
 next-desklet-id=3
 hotcorner-layout=['scale:true:150', 'scale:false:0', 'scale:false:0', 'desktop:false:0']
 
@@ -89,7 +89,7 @@ font='Inter 10'
 
 [net/launchpad/plank/docks/dock1]
 alignment='center'
-dock-items=['nemo.dockitem', 'org.gnome.Terminal.dockitem', 'google-chrome.dockitem']
+dock-items=['org.gnome.Terminal.dockitem', 'google-chrome.dockitem', 'orca-ide.dockitem']
 gap-size=8
 hide-delay=300
 hide-mode='window-dodge'

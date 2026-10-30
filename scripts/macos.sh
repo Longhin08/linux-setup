@@ -85,10 +85,14 @@ done
 # Dock Plank Reloaded: tema com pontinhos discretos, apps fixados, abre com o sistema
 mkdir -p "$HOME/.local/share/plank/themes/Mac-Dots" "$HOME/.config/plank/dock1/launchers" "$HOME/.config/autostart"
 cp "$M/plank-theme/dock.theme" "$HOME/.local/share/plank/themes/Mac-Dots/dock.theme"
-for a in nemo org.gnome.Terminal google-chrome; do
+rm -f "$HOME/.config/plank/dock1/launchers/nemo.dockitem"
+for a in org.gnome.Terminal google-chrome; do
   printf '[PlankDockItemPreferences]\nLauncher=file:///usr/share/applications/%s.desktop\n' "$a" \
     > "$HOME/.config/plank/dock1/launchers/$a.dockitem"
 done
+# Orca (o .desktop vem da etapa dev)
+printf '[PlankDockItemPreferences]\nLauncher=file://%s/.local/share/applications/orca-ide.desktop\n' "$HOME" \
+  > "$HOME/.config/plank/dock1/launchers/orca-ide.dockitem"
 printf '[Desktop Entry]\nType=Application\nName=Plank\nExec=plank\nX-GNOME-Autostart-enabled=true\n' \
   > "$HOME/.config/autostart/plank.desktop"
 
