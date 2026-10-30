@@ -42,6 +42,7 @@ Os scripts podem ser rodados de novo sem problema; o que já está instalado é 
 | Etapa      | O que faz |
 |------------|-----------|
 | `apt`      | `apt upgrade` + pacotes de [`packages.txt`](packages.txt): git, gh, jq, tmux, zsh, build-essential, Python (pip/venv/dev), codecs, rede (arp-scan, whois, dnsutils) |
+| `zram`     | Swap comprimido na RAM ([zram](https://docs.kernel.org/admin-guide/blockdev/zram.html), zstd, metade da RAM) na frente do swap em disco, para as janelas não travarem quando a memória aperta |
 | `repos`    | VS Code, Docker (+ compose/buildx, usuário no grupo `docker`), AnyDesk, Google Chrome (navegador padrão; remove o Firefox), Discord |
 | `dev`      | nvm + Node 24, Claude Code, OpenCode, Orca (AppImage + atalho no menu) |
 | `vscode`   | Extensões de [`vscode-extensions.txt`](vscode-extensions.txt) |

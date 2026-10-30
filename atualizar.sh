@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Leva um PC instalado com uma versão anterior deste repo ao estado atual:
-# pacotes de rede, visual macOS + Batman reaplicado (terminal, barra, dock, widgets)
+# pacotes de rede, zram, visual macOS + Batman reaplicado (terminal, barra, dock, widgets)
 # e só o painel de cima no Cinnamon (sem o dock antigo feito com um segundo painel).
 # Temporário: depois de rodar no outro PC, este script sai do repo.
 set -euo pipefail
@@ -14,6 +14,9 @@ fi
 
 # Pacotes novos
 sudo apt install -y arp-scan whois dnsutils
+
+# Swap comprimido na RAM (animações travando por falta de memória)
+bash "$ROOT/scripts/zram.sh"
 
 # Visual: as etapas sobrescrevem tema, terminal, prompt, dock e widgets
 "$ROOT/install.sh" macos terminal batman
