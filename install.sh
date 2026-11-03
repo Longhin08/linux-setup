@@ -6,7 +6,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export ROOT
 
-STEPS=(apt zram nvidia repos dev vscode desktop macos terminal batman dotfiles)
+STEPS=(apt zram grub nvidia repos dev vscode desktop macos terminal batman dotfiles)
 [ $# -gt 0 ] && STEPS=("$@")
 
 if [ "$EUID" -eq 0 ]; then
@@ -23,4 +23,4 @@ for step in "${STEPS[@]}"; do
 done
 
 echo -e "\n\033[1;32mPronto!\033[0m Faça logout/login para aplicar o grupo docker e o tema."
-echo "Depois: gh auth login  e  claude  (para logar)."
+echo "Depois: gh auth login,  claude  (para logar)  e  sudo tailscale up."

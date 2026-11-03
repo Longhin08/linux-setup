@@ -28,10 +28,15 @@ PROFILE="$(gsettings get org.gnome.Terminal.ProfilesList default 2>/dev/null | t
 PROFILE="${PROFILE:-b1dcc9dd-5262-4d8d-a863-c897e6d979b9}"
 dconf load "/org/gnome/terminal/legacy/profiles:/:$PROFILE/" < "$ROOT/dotfiles/terminal/gnome-terminal.dconf"
 
-# Selecionar texto já copia (o gnome-terminal não tem essa opção): o autocutsel
-# sincroniza a seleção (PRIMARY) com a área de transferência, no terminal e no resto do sistema
-sudo apt install -y autocutsel
+# Selecionar texto já copia, só no terminal (o gnome-terminal não tem essa opção)
 mkdir -p "$HOME/.config/autostart"
-printf '[Desktop Entry]\nType=Application\nName=Copiar ao selecionar\nExec=sh -c "autocutsel -fork; autocutsel -selection PRIMARY -fork"\nX-GNOME-Autostart-enabled=true\nNoDisplay=true\n' \
-  > "$HOME/.config/autostart/autocutsel.desktop"
-pgrep -x autocutsel >/dev/null || { autocutsel -fork; autocutsel -selection PRIMARY -fork; }
+install -m 0755 "$ROOT/dotfiles/bin/terminal-copy-on-select" "$HOME/.local/bin/terminal-copy-on-select"
+printf '[Desktop Entry]\nType=Application\nName=Copiar ao selecionar no terminal\nExec=%s\nX-GNOME-Autostart-enabled=true\nNoDisplay=true\n' \
+  "$HOME/.local/bin/terminal-copy-on-select" > "$HOME/.config/autostart/terminal-copy-on-select.desktop"
+pkill -f bin/terminal-copy-on-select || true
+setsid -f "$HOME/.local/bin/terminal-copy-on-select" >/dev/null 2>&1
+
+# Máquinas instaladas antes: o autocutsel copiava a seleção no sistema todo
+rm -f "$HOME/.config/autostart/autocutsel.desktop"
+pkill -x autocutsel || true
+sudo apt remove -y autocutsel

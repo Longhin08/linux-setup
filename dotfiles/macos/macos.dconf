@@ -56,7 +56,8 @@ name='Ulauncher'
 
 [org/cinnamon/desktop/keybindings/media-keys]
 area-screenshot=['<Shift>Print', '<Super><Shift>4']
-area-screenshot-clip=['<Control><Shift>Print', '<Super><Control><Shift>4']
+area-screenshot-clip=['<Control><Shift>Print', '<Super><Control><Shift>4', '<Super><Shift>s']
+screensaver=['<Control><Alt>l', 'XF86ScreenSaver', '<Super>l']
 screenshot=['Print', '<Super><Shift>3']
 screenshot-clip=['<Control>Print', '<Super><Control><Shift>3']
 window-screenshot=['<Alt>Print', '<Super><Shift>5']

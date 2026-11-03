@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Programas de terceiros: VS Code, Docker, AnyDesk, Chrome (padrão, no lugar do Firefox), Discord
+# Programas de terceiros: VS Code, Docker, AnyDesk, Chrome (padrão, no lugar do Firefox), Discord, Tailscale
 set -euo pipefail
 
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -37,6 +37,10 @@ install_deb() {
 }
 install_deb google-chrome-stable "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 install_deb discord "https://discord.com/api/download?platform=linux&format=deb"
+
+# Tailscale (o login é à parte: sudo tailscale up)
+command -v tailscale >/dev/null || curl -fsSL https://tailscale.com/install.sh | sh
+sudo systemctl enable --now tailscaled
 
 # Firefox fora; Chrome como navegador padrão
 mapfile -t ff < <(dpkg-query -W -f '${db:Status-Abbrev} ${Package}\n' 'firefox*' 2>/dev/null | awk '/^ii/ {print $2}')

@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+# Selecionar texto no gnome-terminal já copia (ele não tem essa opção). Observa a
+# seleção (PRIMARY) e só copia para a área de transferência se o terminal estiver em foco.
+import subprocess
+
+import gi
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gdk, Gtk
+
+PRIMARY = Gtk.Clipboard.get(Gdk.SELECTION_PRIMARY)
+CLIPBOARD = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+
+def xprop(*args):
+    return subprocess.run(["xprop", *args], capture_output=True, text=True).stdout
+
+
+def terminal_in_focus():
+    window = xprop("-root", "_NET_ACTIVE_WINDOW").split()[-1]
+    return "gnome-terminal" in xprop("-id", window, "WM_CLASS").lower()
+
+
+def copy(_clipboard, text, _data):
+    if text:
+        CLIPBOARD.set_text(text, -1)
+
+
+def on_selection(*_):
+    if terminal_in_focus():
+        PRIMARY.request_text(copy, None)
+
+
+PRIMARY.connect("owner-change", on_selection)
+Gtk.main()

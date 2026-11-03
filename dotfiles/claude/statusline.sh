@@ -1,10 +1,23 @@
 #!/bin/bash
 input=$(cat)
 
-# Repassa o payload pro Orca (fica aqui, e não no settings.json, porque o Orca
-# sobrescreve qualquer statusLine cujo comando mencione o script dele)
-if [ -x "$HOME/.orca/agent-hooks/claude-statusline.sh" ]; then
-  printf "%s" "$input" | /bin/sh "$HOME/.orca/agent-hooks/claude-statusline.sh" >/dev/null 2>&1
+# Repassa os limites de uso pra barra de status do Orca. Faz o mesmo que o script
+# dele, que ele não cria quando já existe um statusLine de usuário (no máximo 1x a cada 15s)
+if [ -n "$ORCA_PANE_KEY" ] && [[ "$input" == *'"rate_limits"'* ]]; then
+  [ -r "$ORCA_AGENT_HOOK_ENDPOINT" ] && . "$ORCA_AGENT_HOOK_ENDPOINT" 2>/dev/null
+  STAMP="${TMPDIR:-/tmp}/orca-claude-statusline-last-${ORCA_PANE_KEY//[^A-Za-z0-9]/_}"
+  NOW=$(date +%s); LAST=$(cat "$STAMP" 2>/dev/null || echo 0)
+  if [ -n "$ORCA_AGENT_HOOK_PORT" ] && [ -n "$ORCA_AGENT_HOOK_TOKEN" ] && [ $((NOW - LAST)) -ge 15 ]; then
+    echo "$NOW" > "$STAMP"
+    printf "%s" "$input" | curl -sS -X POST "http://127.0.0.1:${ORCA_AGENT_HOOK_PORT}/statusline/claude" \
+      --connect-timeout 0.5 --max-time 1.5 \
+      -H "X-Orca-Agent-Hook-Token: ${ORCA_AGENT_HOOK_TOKEN}" \
+      --data-urlencode "paneKey=${ORCA_PANE_KEY}" \
+      --data-urlencode "configDir=${CLAUDE_CONFIG_DIR:-}" \
+      --data-urlencode "env=${ORCA_AGENT_HOOK_ENV:-}" \
+      --data-urlencode "version=${ORCA_AGENT_HOOK_VERSION:-}" \
+      --data-urlencode "payload@-" >/dev/null 2>&1 &
+  fi
 fi
 
 MODEL=$(echo "$input" | jq -r '.model.display_name')

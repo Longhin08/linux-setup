@@ -27,7 +27,7 @@ cd linux-setup
 ./install.sh
 ```
 
-Depois: logout/login (grupo `docker` + tema), `gh auth login` e `claude` para logar.
+Depois: logout/login (grupo `docker` + tema), `gh auth login`, `claude` para logar e `sudo tailscale up`.
 
 Dá pra rodar só algumas etapas:
 
@@ -43,13 +43,14 @@ Os scripts podem ser rodados de novo sem problema; o que já está instalado é 
 |------------|-----------|
 | `apt`      | `apt upgrade` + pacotes de [`packages.txt`](packages.txt): git, gh, jq, tmux, zsh, build-essential, Python (pip/venv/dev), codecs, rede (arp-scan, whois, dnsutils) |
 | `zram`     | Swap comprimido na RAM ([zram](https://docs.kernel.org/admin-guide/blockdev/zram.html), zstd, metade da RAM) na frente do swap em disco, para as janelas não travarem quando a memória aperta |
+| `grub`     | Só em dual boot: o menu de boot fica esperando a escolha, sem iniciar nada sozinho |
 | `nvidia`   | Só com placa NVIDIA: driver proprietário recomendado (`ubuntu-drivers`) no lugar do nouveau e, em notebook híbrido, `prime-select nvidia`. Reiniciar depois (com Secure Boot, confirmar a chave MOK no boot) |
-| `repos`    | VS Code, Docker (+ compose/buildx, usuário no grupo `docker`), AnyDesk, Google Chrome (navegador padrão; remove o Firefox), Discord |
+| `repos`    | VS Code, Docker (+ compose/buildx, usuário no grupo `docker`), AnyDesk, Google Chrome (navegador padrão; remove o Firefox), Discord, Tailscale |
 | `dev`      | nvm + Node 24, Claude Code, OpenCode, Orca (AppImage + atalho no menu) |
 | `vscode`   | Extensões de [`vscode-extensions.txt`](vscode-extensions.txt) |
 | `desktop`  | Base do Cinnamon: gestos do touchpad, teclado `br+thinkpad`, sons desligados, monitores sempre na taxa de atualização máxima (`max-refresh`, no login e ao plugar um monitor) |
-| `macos`    | Visual de macOS: tema [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) escuro (apps, bordas com botões 🟡🟢🔴 à direita e Cinnamon), ícones Papirus com pastas azuis, cursor Bibata, fonte Inter, wallpapers escuros do macOS, barra em cima fina e transparente, dock [Plank Reloaded](https://github.com/zquestz/plank-reloaded) com prévia das janelas, widgets (relógio, calendário, monitor) com vidro desfocado, busca [Ulauncher](https://ulauncher.io) no Super+Espaço, gestos de 3/4 dedos, prints Super+Shift+3/4/5 e luz noturna |
-| `terminal` | gnome-terminal com as cores da Apple no modo escuro, fonte MesloLGS Nerd Font, prompt [Starship](https://starship.rs) e texto selecionado já copiado (`autocutsel`) |
+| `macos`    | Visual de macOS: tema [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) escuro (apps, bordas com botões 🟡🟢🔴 à direita e Cinnamon), ícones Papirus com pastas azuis, cursor Bibata, fonte Inter, wallpapers escuros do macOS, barra em cima fina e transparente, dock [Plank Reloaded](https://github.com/zquestz/plank-reloaded) com prévia das janelas, widgets (relógio, calendário, monitor) com vidro desfocado, busca [Ulauncher](https://ulauncher.io) no Super+Espaço, gestos de 3/4 dedos, prints Super+Shift+3/4/5 e Super+Shift+S (área, copia), bloqueio no Super+L e luz noturna |
+| `terminal` | gnome-terminal com as cores da Apple no modo escuro, fonte MesloLGS Nerd Font, prompt [Starship](https://starship.rs) e texto selecionado já copiado, só no terminal (`terminal-copy-on-select`) |
 | `batman`   | Cores do Batman por cima do visual de macOS: tema WhiteSur com destaque amarelo (texto preto em cima), pastas Papirus amarelas, dock e widgets pretos com amarelo, terminal e prompt nas mesmas cores, 8 wallpapers escuros do Batman e do Homem de Ferro ([wallhaven](https://wallhaven.cc)) |
 | `dotfiles` | `.bashrc` (PATH, nvm, opencode), git (nome/e-mail + credencial do gh), statusline e atalhos do Claude Code |
 
