@@ -68,9 +68,7 @@ switch-input-source=['XF86Keyboard']
 switch-input-source-backward=['<Shift>XF86Keyboard']
 
 [org/cinnamon/settings-daemon/plugins/color]
-night-light-enabled=true
-night-light-schedule-mode='auto'
-night-light-temperature=uint32 3500
+night-light-enabled=false
 
 [org/gnome/desktop/interface]
 gtk-theme='WhiteSur-Dark'
