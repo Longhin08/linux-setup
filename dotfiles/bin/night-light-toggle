@@ -1,9 +1,11 @@
 #!/bin/bash
 # Liga/desliga a luz noturna do Cinnamon (atalho Super+N)
-KEY="org.cinnamon.settings-daemon.plugins.color night-light-enabled"
-if [ "$(gsettings get $KEY)" = true ]; then
-  gsettings set $KEY false; msg="Luz noturna desligada"
+# Liga no modo "always" (vale na hora); no "auto" só teria efeito depois do pôr do sol
+S=org.cinnamon.settings-daemon.plugins.color
+if [ "$(gsettings get $S night-light-enabled)" = true ]; then
+  gsettings set $S night-light-enabled false; msg="Luz noturna desligada"
 else
-  gsettings set $KEY true; msg="Luz noturna ligada"
+  gsettings set $S night-light-schedule-mode always
+  gsettings set $S night-light-enabled true; msg="Luz noturna ligada"
 fi
 command -v notify-send >/dev/null && notify-send -t 1500 -i night-light "$msg"
