@@ -19,8 +19,13 @@ for step in "${STEPS[@]}"; do
   script="$ROOT/scripts/$step.sh"
   [ -f "$script" ] || { echo "Etapa desconhecida: $step" >&2; exit 1; }
   echo -e "\n\033[1;36m==> $step\033[0m"
+  # login no GitHub antes do dotfiles, que liga o git à credencial do gh
+  if [ "$step" = dotfiles ] && command -v gh >/dev/null \
+     && ! gh auth status >/dev/null 2>&1 && [ -t 0 ]; then
+    gh auth login --git-protocol https --web || echo "gh auth login falhou; rode depois e repita ./install.sh dotfiles" >&2
+  fi
   bash "$script"
 done
 
 echo -e "\n\033[1;32mPronto!\033[0m Faça logout/login para aplicar o grupo docker e o tema."
-echo "Depois: gh auth login,  claude  (para logar)  e  sudo tailscale up."
+echo "Depois: claude  (para logar)  e  sudo tailscale up."

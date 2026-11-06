@@ -27,7 +27,7 @@ cd linux-setup
 ./install.sh
 ```
 
-Depois: logout/login (grupo `docker` + tema), `gh auth login`, `claude` para logar e `sudo tailscale up`.
+No caminho ele pede o `gh auth login` (antes da etapa `dotfiles`, que liga o git à credencial do gh). Depois: logout/login (grupo `docker` + tema), `claude` para logar e `sudo tailscale up`.
 
 Dá pra rodar só algumas etapas:
 
