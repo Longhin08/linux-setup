@@ -41,6 +41,9 @@ mkdir -p "$HOME/.local/bin"
 install -m 0755 "$ROOT/dotfiles/bin/papirus-folder-color" "$HOME/.local/bin/papirus-folder-color"
 "$HOME/.local/bin/papirus-folder-color" blue
 
+# Super+N liga/desliga a luz noturna (atalho no dconf)
+install -m 0755 "$ROOT/dotfiles/bin/night-light-toggle" "$HOME/.local/bin/night-light-toggle"
+
 # Wallpapers escuros do macOS (512pixels.net); usa o Golden Gate
 WALLS="$HOME/.local/share/backgrounds/macos-dark"
 mkdir -p "$WALLS"

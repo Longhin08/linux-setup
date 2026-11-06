@@ -47,12 +47,17 @@ swipe-up-4='VOLUME_UP::end'
 tap-3='MEDIA_PLAY_PAUSE::end'
 
 [org/cinnamon/desktop/keybindings]
-custom-list=['custom0']
+custom-list=['custom0', 'custom1']
 
 [org/cinnamon/desktop/keybindings/custom-keybindings/custom0]
 binding=['<Super>space']
 command='ulauncher-toggle'
 name='Ulauncher'
+
+[org/cinnamon/desktop/keybindings/custom-keybindings/custom1]
+binding=['<Super>n']
+command='night-light-toggle'
+name='Luz noturna'
 
 [org/cinnamon/desktop/keybindings/media-keys]
 area-screenshot=['<Shift>Print', '<Super><Shift>4']
